@@ -16,8 +16,9 @@ class Task:
             self.done = True
 #   def __repr__(self): - допишу когда откладка нужнеа будет
 class TaskManager:
-    def __init__(self):
+    def __init__(self, filename=False):
         self.tasks = []
+        self.filename = "tasks.json"
 
     def add_task(self, task):
         self.tasks.append(task)
@@ -30,7 +31,7 @@ class TaskManager:
         if not isinstance(number, int):
             raise TypeError("Должно быть число")
         elif number > len(self.tasks) or number < 1:
-            raise ValueError("Некоректное значение")
+            raise ValueError("Некорректное значение")
         else:
             return self.tasks[number - 1]
 
@@ -41,6 +42,23 @@ class TaskManager:
     def task_delete(self, number):
         task = self.get_task(number)
         self.tasks.remove(task)
+
+    def save_task(self):
+        data = []
+        for task in self.tasks:
+            data.append(task.to_dict())
+        with open(self.filename, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent = 4)
+
+    def load(self):
+        try:
+            with open(self.filename, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            for item in data:
+                self.tasks.append(Task(item["name"], item["deadline"], item["done"]))
+        except FileNotFoundError as e:
+            print(f'Ошибка: {e}')
+
 
 if __name__ == "__main__":
     manager = TaskManager()
@@ -55,9 +73,14 @@ if __name__ == "__main__":
     manager.show_tasks()
     manager.task_delete(1)
     manager.show_tasks()
+    manager.save_task()
+    manager2 = TaskManager()
+    manager2.load()
+    manager2.show_tasks()
 
 
 
 
 
-    
+
+
