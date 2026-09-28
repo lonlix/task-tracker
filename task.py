@@ -38,6 +38,26 @@ class TaskManager:
         task = self.get_task(number)
         task.mark_done()
 
+    def task_delete(self, number):
+        task = self.get_task(number)
+        self.tasks.remove(task)
+
+if __name__ == "__main__":
+    manager = TaskManager()
+    b = Task("БЖД проект", "02.08.2021" )
+    v = Task("мат проект", "22.01.2041" )
+    h = Task("чертеж проект", "12.08.2091" )
+    manager.add_task(b)
+    manager.add_task(v)
+    manager.add_task(h)
+    manager.show_tasks()
+    manager.task_done(2)
+    manager.show_tasks()
+    manager.task_delete(1)
+    manager.show_tasks()
+
+
+
 
 
     
