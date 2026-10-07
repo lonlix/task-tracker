@@ -34,8 +34,6 @@ def task_done_menu(manager, number):
 def user_input(text="Ввод: "):
     return input(text)
 
-
-
 def print_menu():
     print("     Меню выбора    ")
     print("1. Добавить задачу.")
@@ -52,6 +50,7 @@ def print_menu_choice():
 def main():
     manager = TaskManager()
     manager.load()
+
     while True:
         print_menu()
         user = user_input()
@@ -89,7 +88,8 @@ def main():
                         print("Нет такого номера")
                 except (ValueError, TypeError) as e:
                     print(f'Error {e}')
-                print("Выбрать еще задачу? \n")
+                    break
+                print("Номер задачи \n")
                 if user_input("[да|нет]: ").lower() == "да":
                     continue
                 else:
