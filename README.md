@@ -16,21 +16,29 @@
 - Покрыт тестами.
 
 ## Запуск
+```
 git clone https://github.com/lonlix/task-tracker.git
 cd task-tracker
 python main.py
+```
 
 ## Пример работы
-     Меню выбора    
+```
+     Меню выбора
 1. Добавить задачу.
 2. Показать все задачи.
 3. Выбрать задачу.
 0. Выход.
-Ввод: 
+Ввод: 2
+1. Task - Сдать лабу, Deadline: 20.10.2026, Done: False
+2. Task - Подготовить доклад, Deadline: 25.10.2026, Done: True
+```
 
 ## Тесты
+```
 pip install pytest
 pytest
+```
 
 ## Стек
 - Python, JSON, pytest
