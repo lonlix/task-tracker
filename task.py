@@ -6,6 +6,10 @@ class Task:
         self.done= done
     def __str__(self):
         return f"Task - {self.name}, Deadline: {self.deadline}, Done: {self.done}"
+
+    def __repr__(self):
+        return f"Task - {self.name}, Deadline: {self.deadline}, Done: {self.done}"
+
     def to_dict(self):
         return {
             "name": self.name,
@@ -14,7 +18,7 @@ class Task:
         }
     def mark_done(self):
             self.done = True
-#   def __repr__(self): - допишу когда откладка нужнеа будет
+
 class TaskManager:
     def __init__(self, filename=False):
         self.tasks = []

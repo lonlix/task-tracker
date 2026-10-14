@@ -1,12 +1,12 @@
 [
     {
-        "name": "123",
-        "deadline": "123",
+        "name": "Накурится",
+        "deadline": "12.04.2023",
         "done": false
     },
     {
-        "name": "234",
-        "deadline": "123",
-        "done": false
+        "name": "мимим",
+        "deadline": "02.10.2021",
+        "done": true
     }
 ]
